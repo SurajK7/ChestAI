@@ -5,9 +5,9 @@
 
 - [x] One cycle Policy
 
-- [ ] Progressive Scaling
+- [x] Progressive Scaling
 
-- [ ] Regularization 
+- [x] Regularization 
 
 - [ ] Curriculum Learning
 
