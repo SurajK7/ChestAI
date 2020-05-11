@@ -1,9 +1,9 @@
 
-- [ ] Label Smoothing (To deal with uncertainity labels)
+- [x] Label Smoothing (To deal with uncertainity labels)
 
-- [ ] Mix-up
+- [x] Mix-up
 
-- [ ] One cycle Policy
+- [x] One cycle Policy
 
 - [ ] Progressive Scaling
 
