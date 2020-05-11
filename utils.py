@@ -5,6 +5,12 @@ chexpert_targets = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Pl
 u_one_features = ['Atelectasis', 'Edema']
 u_zero_features = ['Cardiomegaly', 'Consolidation', 'Pleural Effusion']
 
+def add_columns(df, train_valid):
+  df['train_valid'] = train_valid
+  df['patient'] = df.Path.str.split('/',3,True)[2]
+  df  ['study'] = df.Path.str.split('/',4,True)[3]
+  return df
+
 def avg_auc_metric(input, targs):
     input=input.detach().cpu()
     targs=targs.detach().cpu().byte()
@@ -16,9 +22,6 @@ def avg_auc_metric(input, targs):
         pass
     auc_scores = torch.tensor(auc_scores)
     return auc_scores.mean()
-
-def saveModelcb(name):
-  return [SaveModelCallback(every='improvement', monitor='avg_auc_metric', name=f'/content/drive/My Drive/models/{name}')]
 
 def validation_eval(learn, full_valid_df):
     acts = full_valid_df.groupby(['patient','study'])[learn.data.classes].max().values
