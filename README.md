@@ -2,7 +2,9 @@
 
 ## Uncertainity Labels
 U-Ones: Map all uncertain labels to positive
+
 U-Zeros: Map all uncertain labels to negative
+
 U-Mixed: Map uncertain labels to either positive or negative according to previous results
 
 ## Transforms
