@@ -19,6 +19,15 @@ FT: Fine Tuning
 
 score: Avg AUC Score
 
+## Baseline U-Mixed 
+DenseNet121, WeightDecay, Dropout, One Cycle Policy, Transforms
+
+model0: score(FE): 0.891; score(FT): 0.89
+
+model1(Mixed Precision): score(FE): 0.891
+
+model2: score(FE): 0.889
+
 ## Baseline U-Ones 
 DenseNet121, WeightDecay, Dropout, One Cycle Policy, Transforms
 
@@ -29,15 +38,10 @@ DenseNet121, WeightDecay, Dropout, One Cycle Policy, Transforms
 
 score(FE): 0.875
 
-## Baseline U-Mixed 
-DenseNet121, WeightDecay, Dropout, One Cycle Policy, Transforms
-
-score(FE): 0.891; score(FT): 0.89
-
 ## Progressive
 DenseNet121, U-Mixed, WeightDecay, Dropout, One Cycle Policy, Transforms, scaled from 160 to 320 px
 
-score(160px, FE):  0.878; score(160px, FT): 0.879; 
+score(160px, FE):  0.878; score(160px, FT): 0.879; score(320px, FE): 0.887
 
 ## Label Smoothing
 DenseNet121, U-Mixed, WeightDecay, Dropout, One Cycle Policy, Transforms, Mapped uncertain 0s to 0.2s and 1s to 0.8s
