@@ -20,13 +20,10 @@ def create_dfs():
   full_valid_df = add_patient_study_isvaild_columns(full_valid_df, True)
   return (full_train_df, full_valid_df)
 
-def create_data(full_df, freeze):
+def create_data(full_df, size, bs):
   tfms = get_transforms(do_flip=False, max_zoom=1.0, max_lighting=0.1)
   src = ImageList.from_df(full_df, '.', 'Path').split_from_df('train_valid').label_from_df('feature_string',label_delim=';')
-  if freeze:
-    data = src.transform(tfms, size=320, padding_mode='zeros', resize_method=ResizeMethod.PAD).databunch(bs=59).normalize(imagenet_stats)
-  else:
-    data = src.transform(tfms, size=320, padding_mode='zeros', resize_method=ResizeMethod.PAD).databunch(bs=56).normalize(imagenet_stats)
+  data = src.transform(tfms, size=size, padding_mode='zeros', resize_method=ResizeMethod.PAD).databunch(bs=bs).normalize(imagenet_stats)
   return data
 
 def validation_eval(learn, full_valid_df):
